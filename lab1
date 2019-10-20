@@ -1,0 +1,311 @@
+IDE为Eclipse
+
+通过点击网站https://www.eclipse.org/eclipse/的各个连接查看是否为自己所需内容
+
+Scalability 
+1. Plug-in startup time
+2. Footprint to understand the space you are using
+3. Look for algorithmic improvements
+4. Context to understand the whole picture
+
+
+Bugs
+.Always enter a bug when you encounter things in Eclipse that are slow or that seem to scale poorly. The performance keyword should be added to make it easier to track and search for performance bugs:
+.Adding tree nodes has N^2 complexity with respect to the number of children on GTK
+.constructor completion taking 15-20 seconds
+.FilteredTree does not scale to arbitrary numbers of nodes
+.Virtual Tree Viewer creates all children of a visible item on exapndToLevel(1)
+.LZWCodec.initializeForDecoding() (or os call?) about 5 times slower
+.Decorators on Common Navigator refreshes too often
+.Caching should be removed from CommonViewer; address over-calling of getSelection()
+.Integrate sleak inside UI test performance framework
+.Invalid icon on performance results when there's no baseline
+.performance test plugin has hard coded values specific to Platform
+.AIOOBE while generating results for only 4 configs
+.Display other data stored while running performance tests
+.JavaProject.getResolvedClasspath() should cache JDK level
+.Potential reuse between source mappers
+.Optimize SetClasspathOperation to do nothing if classpath has not changed
+.Should not build if expanded classpath has not changed
+.Allow to make a working copy consistent without missing delta
+.Compilation participants should know if problems requested
+.SourceType.resolveType seems slower than it should be
+.Eclipse background compile disrupts user input
+.Exploit java.nio to accelerate i/o operations
+.Option to have Batch Compiler cache jar files
+.Scalability issues when using linked source and excludes with single-root source tree
+.Some classes missing hashCode()
+.Implement an arena allocator for the indexer
+.Compilation time grows exponentially for nested closures
+.Lots of parser invocations for classes that should have been compiled already
+.Investigate using a more relaxed schedulingRule for JavaBuilder
+.Open Type Hierarchy on IResource takes >2x longer depending on installed bundles
+.improve re-use of inference contexts
+.Eclipse slow while editing Java source code
+.It takes a very long time to refresh variables contents in the Variables view
+.Importing 'Installed JREs' preferences takes long
+.Investigate caching ArrayReference values
+.UI freeze of 6.2s at 03:17:07.015
+.Slow editing of large classes due to inefficient ArrayList access in hot loop reconciling
+.multi-class move, non-java files are searched many times
+.Simplify enablement check of PullUp action
+.UI freeze caused by reading jar files on the UI thread
+.UI freeze for several minutes during search
+.Updating dynamic Java working sets even though I do not have any
+.Lazy refresh
+.Migrate API tools framework to support binary and source analysis
+.Option to remove the bundles being searched for in the searched in set
+.Only consider the bundles that import or require the searched for bundles
+.Investigate splitting up the incremental builder
+.Investigate an API filter file delta
+.Investigate performance improvements for tests
+.Mega-UI lockout when editing multiple manifests
+.Enable/Disable paste - currently being done incorrectly
+.Mucho garbage created in JavaProjectElementInfo.newNameLookup while checking manifest
+.No Tip of Iceberg Here
+.Run validation only on changed portion of file
+.Eclipse Application launch config takes long time to open
+.Avoid classpath container update on manifest change unless required
+.Compile times rose significantly since 3.7
+.Performance issue of Run/Debug Configurations for Eclipse Applications
+.Use project scheduling rule for PluginModelManager job
+.Several "Separate JRE Build*" tests got a regression
+.CVS: "Compare With / Another Branch or Version... / BASE" unnecessarily calculates the remote changes
+.Commit Popup is very slow to show up
+.Memory issues when committing project with lots of changed/added files
+.Team Synchronize with repository MUCH slower in Juno than Helios (using CVS)
+.Do not necessarily build whole workspace before debug
+.Opening Launch config dialog freeze UI
+.The testLoadCatalog() scenario shows decresed performance
+.Duplicated strings in memory from CVS folders
+.ResourceInfo could avoid fields that mostly hold 'null'
+.Avoid quadratic Content Type performance cost
+.Investigate storing resource tree snapshots in ZIP format
+.Cache read-only and symlink state in ResourceInfo
+.FilePropertyTester contentTypeId check should not request content description when filename is not viable
+.Optimize the "Building Workspace" job
+.Core/Expressions should cache result of PropertyTester check when all inputs are unchanged
+.Add trace option for text search
+.optimization for drag scrolling
+.drawing themed borders is slow
+.Inserting TreeItem at a specified index
+.StyledText.append(...) very slow (was: Search freezes on error (filesystem out of sync))
+.(C)TabFolder with many (invisible) controls slows down all redraws in that window, unlike NSTabView
+.CTabFolder layouts ALL children when a parent container request layout(true,true)
+.Word wrap makes some actions very slow
+.Performance problems with large numbers (10000) of tabs in CTabFolder
+.Bad performance of expanding trees on linux
+.Improve SWT-GTK3 performance
+.shutdown takes several minutes
+.OOME while trying to look at file local revisions
+.Synchronize view takes forever to show changes when there are many (~8000) changed files
+.Problems view updating too slow
+.DefaultDetailsArea should not insert each line separately into StyledText
+.Illegal context definitions might severely slow down performance
+.Compatlayer code schedules layoutDeferred calls on main shell who result in a complete relayout on perspective switch
+.Editors restored while the workbench is not up, performance problem?
+.Switching to the dark theme takes a long time
+.gnome-shell process uses very high CPU when Eclipse is open
+.Closing many editors in bulk operation freezes eclipse - should be inside a Job
+.Bad performance due to redundant visibleWhen calculations of toolbar contributions
+.Out of file handles doing large search
+.builder could reuse binary location package caches
+.Improve performance of GC.drawImage for images with alpha values
+.Step over" *extremely* slow in some cases
+.Switch from synchronous layout() calls to requestLayout() in forms
+.Keyboard repeat rate slower when selecting text
+.Regexp search performance with \n
+.very long start-up org.eclipse.ltk.ui.refactoring
+.Non-blocking Java completion
+.Memory-extensive computation of Binding.computeUniqueKey() slows down editing of large files
+.Permgen memory leak on ant run
+.Too many refreshes when building Dynamic Menus
+.performance regression in ToolBarManager::update and DragUtil::getDisplayBounds?
+.Performance Tests Failing: ***View*** setSize() tests running too fast
+.Performance Tests Failing: ResizeTest#Perspective org.eclipse.ui.tests.util.EmptyPerspective setSize()
+.Performance Tests Failing: ResizeTest#Perspective org.eclipse.ui.tests.rcp.util.EmptyPerspective setSize()
+.ResizeTest#Perspective org.eclipse.ui.tests.presentations.StandaloneViewPerspective setSize()
+.ResizeTest#Perspective org.eclipse.ui.tests.internal.Bug78470Test.MyPerspective setSize(
+.ResizeTest#Perspective org.eclipse.ui.tests.fastview_perspective setSize(
+.ResizeTest#Perspective org.eclipse.ui.tests.dnd.StandaloneViewPerspective setSize(
+.bug 88345 test failin
+.ResizeTest#Perspective:org.eclipse.ui.tests.PerspectiveWithMultiViewPlaceholdersAtTopLevel setSize()
+.ResizeTest#Perspective org.eclipse.ui.resourcePerspective setSize()
+.ResizeTest#Perspective org.eclipse.team.ui.TeamSynchronizingPerspective setSize()
+.Performance Tests Failing: ResizeTest
+.Performance regression in perspective switching since M1
+.Project popup menu is slow
+.Presentation performance suites failing
+.Resize tests are slower since M7
+.Reduce the number of actions that listen to selections
+.WorkbenchPage#setActivePart takes 17% of the time to open editors
+.TabbedStackPresentation#selectPart takes 22% of time to open editors
+.LayoutUtil could make use of new layout methods in Composite
+.ViewerActionBuilder processes more config elements than it should
+.PartStack creation slow on startup
+.Spell check takes long when computing proposals for a very long string
+.AnnotationPainter should use the horizontal clipping information of repaint requests to optimize painting
+.ASCII/BINARY change panel is slow
+.Optimize update to minimize round trips
+.Performance issues sharing large projects
+.Remote tag should batch as much as possible
+.Keyboard navigation in CVS Repo view is slow when Properties view open
+.add to cvs version control dialog scales badly
+.Out of memory error while using Source > Cleanup
+.OpenAction and Open Type should not fully create all editors
+.Many garbage resources created from Java model elements when showing and decorating items
+.Quick outline dialog flashing
+.FastPartitioner should cache partitioning
+.ContentDescriptionManager: want you to implement cache mechanism for performance
+.Eclipse takes extremely long time to recover after workspace crash
+.History Store "oldest entry" policy enforcement could be smarter
+.Content caching strategy
+.Log entry cache takes up 10 MB
+.Non-Java projects get re-built when changing a compiler setting on the preference page
+.Duplicated strings from key in ResourceInfo.syncInfo
+.Ant editor keeps links to Jars open
+.Reconcile happens even for a no-op change to a build file
+.Commands takes 81% of the time to open a workbench window
+.OpenClosePerspectiveTest#testOpenClosePerspectives getting slower
+.Selection obtained multiple times when processing object contributions
+.look into removing catalogs from NativeKeyFormatter and associated classes
+.Expensive unnecessary calls to PluginAction::refreshEnablement()
+.speed up CheckedTree selection
+.Expensive unnecessary calls to PluginAction::refreshEnablement()
+.speed up CheckedTree selection
+.PageBook pages created when view not visible
+.Package explorer selection flashing when opening a new editor
+.Outline view toolbar flashes on tab switch
+.performance: Sets of previous items are built unnecessarily
+.Outline popup flickers with decorators on
+.Convert Line Delimiters takes long when (Java) editor is open on large files
+.TextViewer#addPresentation performance impact when using default style range
+.Simultaneously opening many files with spelling problems hogs the CPU (100% usage) and eventually crashes the platform
+.incremental reconciler should be used for spell checking
+.QuickDiff initializes when opening an editor using the LastSaveReferenceProvider
+.reduce posted repaint runnables
+.Line number ruler flashes on tab switch
+.SEF and StyleRange usage (1GFL4E0)
+.Changing modes with all expanded behaves poorly
+.Text replace takes a long time
+.UI freeze or 3s in LaunchManager.createInfoFromXML
+.Contextual launch mechanism can cause a lot of bundles to load
+.Switch to outgoing changes very slow if many incomming change sets
+.100% CPU used in TimeoutOutputStream.writeUntilDone
+.CVS support does not scale well for Very Large FilesPerformance problem when synchronizing a project
+.Subscriber refreshes may have multiple round trips
+.CVS jobs running constantly during build
+.Cache base contents accross restarts
+.Performance blooper: preference keys and init should not be tied to UI (e.g. preference pages)
+.Investigate compare of large zips
+.Comparing checks file contents every time?
+.Heap usage jumps by 28mb when opening the compare editor.
+.Compare with each other does not scale for large directories when ignore whitespace is enabled
+.structure view on additions/deletions slow
+.Our build job should try to avoid "touching" a project to cause an incremental build
+.StyledText is very slow with long string + word wrap
+.Too many performance tests have only one measure
+.refactor -> Introduce Indirection is excessively slow
+.searches binaries
+.Avoid bean introspection overhead
+.Correct indentation slow for very large files (> 10k lines)
+.Performance regression in CleanUpPerfTest#testCodeStyleCleanUp()
+.Renaming a "getName" method takes ages to complete "checking preconditions" phase...
+.'TypeHierarchyPerfTest' is useless since 3.6
+.TextChange.perform(...) should not use unrestricted rewrite session for small changes
+.Browsing views should not update contents when not visible
+.Revert/reconcile performance issue
+.Editing large units causes some user actions to be delayed
+.Format operation is slow on big file when Folding is enabled
+.Create minimal annotation model updates when reconciling
+.Java editor garbage creation
+.Make smap mapping more memory friendly.
+.Performance degradation when debuging
+.should try to implement lazy tree expansion in background to make it more responsive
+.perspectiveSwitchTest#testPerspectiveSwitch 50% slower than M5
+.OpenMultipleEditorTest#testOpenMultipleEditors: running
+.Multiple Project objects when changing location in the new wizard
+.Improve Virtual TreeViewer performance
+.CustomizePerspectiveDialog uses its own imageCache
+.UI code uses extra Composites
+.WorkbenchParts resized when maximized Shell is minimized
+.updating: Need hooks to control enablement of global menu items
+.still updates itself although it's in a invisible perspective
+.CodeStream could avoid reseting labelsCount
+.Updating Progress view when there are a lot of jobs blocks UI/Main thread makes UI sluggish for minutes
+.jdt.core plugin activated when it should not
+.URIUtil.toURI(IPath) and toURI(String) very expensive
+.simpler implementation of XMLRootElementContentDescriber
+.Compact index format
+.ASTParser: better reusability
+.Control#getBackground() / Foreground : is new object required ?
+.Tree.createItem() has bad performance
+.Revisit creating preference nodes in CSS bridge
+.Decorator manager delays image rendering even if element has no contributed decoration
+.Performance degrade on createEditorActionBars() call
+.Performance regression in marker update handling
+.ElementContainerImpl.getChildren uses expensive computation
+.UI looks dead / high CPU usage when editing large project
+.FilteredItemsSelectionDialog dialog hangs on big selection
+.Performance regression in OpenCloseViewTest#showView:BookmarkView()
+.Performance of ListSimpleValueObservableList/MapSimpleValueObservableMap
+.Performance Tests
+.jsp files opened and progress view use CPU 30% - 40%
+.Calling TreeViewer.expandToLevel() in a virtual tree materializes all the expanded children.
+.Handlers resolve their URIs early
+.Many marker attribute lookups during marker sorting
+.TreeViewer: Refreshing from a large number of entries to a small number of entries very slow
+.Performance regression in performance test
+.FilteredItemsSelectionDialog should have a singleton ItemsListSelector
+.No UI feedback when starting to delete many files
+.Label Decorator could be optimized with owner draw
+.Open Resource dialog should not fully create all editors
+.Decoration should be turned off for periods when it is flooded with requests
+.Workbench shutdown initialized PropertyPageContributorManger
+.Colour factories run eagerly even when theme category invisible due to presentation binding
+.Unnecessary plugin loading caused by PluginAction#isOkToCreateDelegate
+.Editing a task is slow to refresh
+.Performance Tests Failing: ComputeSizeTest#Massively Recursive TrimLayout computeSize()
+.OpenCloseWindowTest#testOpenCloseWindows:org.eclipse.ui.resourcePerspective()
+.optimization in editor lookup possible
+.Deleting first item from Lazy Virtual Table View test is slow
+.Opening multiple editors should not activate all of them
+.Performance issue with WorkbenchIntroManager.showIntro
+.Improve the workbench page activation list
+.Avoid the use of coallator keys when running on the English locale
+.action creation too eager
+.ColorsAndFontsPreferencePage should use new NLS support
+.TreeViewer performance issues with lazy loading content provider
+.UI freeze during startup due to non-visible DetailedProgressViewer
+.Rework PerformanceStats to log entries similar to UI freeze monitor
+.Improve performance of EditorRegistry#readResources
+.Improve interactive performance of the Eclipse SDK
+.Improve startup time (performance ) of the Eclipse SDK
+.Run the clean part of Projects -> Cleans (all) in parallel for projects
+.UI freeze while opening multiple editors
+.ProgressMonitorDialog: throttled update of progress label
+
+
+Resources
+1 String.substring()
+2 Unbufferred I/O
+3 Strings in the plug-in registry
+4 Excessive crawling of the extension registry
+5 Message catalog keys
+6 Eager preference pages
+7 Too much work on activation
+8 Decorators
+9 PDE cycle detection
+10 Too many resource change listeners
+11 Calling Bundle.start()
+12 JAR signing and verification
+13 Selective loading of JAR files
+14 Not closing streams from zip and jar files
+
+
+Evolving Java-based APIs
+.Add coverage for JDK 1.5 language features: generics, enums, annotation types, variable arity methods
+.Added note about breakage due to adding API method to classes that may be subclassed
+.Added suggestion about making obsolete hook methods final
+
+
